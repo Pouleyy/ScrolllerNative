@@ -39,6 +39,10 @@ class Home extends Component {
     );
   };
 
+  handleLoadMore = () => {
+    this.props.actions.subreddit.getSubreddit();
+  };
+
   handlePressButton = () => {
     this.props.actions.subreddit.getSubreddit();
   };
@@ -53,6 +57,7 @@ class Home extends Component {
           numColumns={2}
           renderItem={this._renderItem}
           keyExtractor={item => item}
+          onEndReached={this.handleLoadMore}
         />
       </Background>
     );
