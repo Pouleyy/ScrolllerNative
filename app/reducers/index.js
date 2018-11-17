@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 
-import themes from './themes';
+import subreddit from './subreddit';
 
 export default combineReducers({
-  themes
+  subreddit
 });
