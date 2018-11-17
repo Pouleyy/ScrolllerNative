@@ -1,3 +1,3 @@
-rootProject.name = 'BoilerPlateYnov'
+rootProject.name = 'ScrollerApp'
 
 include ':app'

@@ -1,4 +1,4 @@
-package com.boilerplateynov;
+package com.scrollerapp;
 
 import android.app.Application;
 
