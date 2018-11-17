@@ -9,14 +9,14 @@ const BackgroundView = styled.View`
   flex: 1;
 `;
 const ContentContainer = styled.View`
-  background-color: ${props => props.theme.color.primary};
+  background-color: #1b252e;
   flex: 5;
   justify-content: center;
   align-items: center;
 `;
 
 const ParameterContainer = styled.View`
-  background-color: ${props => props.theme.color.secondary};
+  background-color: #2e241b;
   flex: 1;
   justify-content: center;
   align-items: center;

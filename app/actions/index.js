@@ -1,3 +1,3 @@
-import * as themes from './themes';
+import * as subreddit from './subreddit';
 
-export default { themes };
+export default { subreddit };
