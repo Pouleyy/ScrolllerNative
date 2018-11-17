@@ -1,29 +1,11 @@
-import { Provider } from 'react-redux'
-import React from 'react'
-import { ThemeProvider } from 'styled-components'
+import React from 'react';
 
-import StackNavigator from './app/config/routes'
-import { store } from './app/config/store'
+import StackNavigator from './app/config/routes';
 
 export default class App extends React.Component {
-  state = {
-    connectedTheme: store.getState('themes')
-  }
-
-  componentDidMount() {
-    store.subscribe(() =>
-      this.setState({ connectedTheme: store.getState('themes') })
-    )
-  }
+  componentDidMount() {}
 
   render() {
-    const { connectedTheme } = this.state
-    return (
-      <Provider store={store}>
-        <ThemeProvider theme={connectedTheme.themes.currentTheme}>
-          <StackNavigator />
-        </ThemeProvider>
-      </Provider>
-    )
+    return <StackNavigator />;
   }
 }
