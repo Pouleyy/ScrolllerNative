@@ -1,8 +1,9 @@
-import { Text, Button, FlatList, Image, View, Dimensions } from 'react-native';
+import { FlatList, Image } from 'react-native';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import GridList from 'react-native-grid-list';
 
 import allTheActions from '../actions/index';
 
@@ -28,10 +29,10 @@ class Home extends Component {
   }
 
   _renderItem = ({ item }) => {
-    console.log(item);
+    //console.log(item);
     return (
       <Image
-        style={{ width: 190, height: 200, paddingBottom: 10 }}
+        style={{ width: '100%', height: '100%', borderRadius: 0 }}
         source={{
           uri: item
         }}
@@ -48,13 +49,15 @@ class Home extends Component {
   };
 
   render() {
-    console.log('ALLLOOOOOO', this.props.subreddits);
+    //console.log('ALLLOOOOOO', this.props.subreddits);
     return (
       <Background>
-        <FlatList
+        <GridList
           style={{ paddingTop: 30 }}
           data={this.props.subreddits}
           numColumns={2}
+          showSeparator
+          separatorBorderColor={'#1b252e'}
           renderItem={this._renderItem}
           keyExtractor={item => item}
           onEndReached={this.handleLoadMore}
