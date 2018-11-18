@@ -3,7 +3,8 @@ import {
   ImageComponent,
   ImageBackground,
   View,
-  Text
+  Text,
+  Platform
 } from 'react-native';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
@@ -79,7 +80,7 @@ class Home extends Component {
     return (
       <Background>
         <GridList
-          style={{ paddingTop: 30 }}
+          style={Platform.OS === "ios" ? paddingTop : 30}
           data={this.props.subreddits}
           numColumns={1}
           showSeparator
