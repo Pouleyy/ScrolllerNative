@@ -10,14 +10,13 @@ export const getImageSubreddit = image => ({
 });
 
 export const getSubreddit = subreddit => dispatch => {
-  const generatedUrl = 'https://scrolller.com/api/random/winterporn';
+  const generatedUrl = 'https://scrolller.com/api/random/cattaps';
   console.log('ttest', subreddit);
   axios({
     method: 'GET',
     url: generatedUrl
   })
     .then(res => {
-      console.log('redux', res);
       dispatch(
         getImageSubreddit({
           list: res.data
