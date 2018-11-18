@@ -72,7 +72,7 @@ class Home extends Component {
     return (
       <Background>
         <GridList
-          style={Platform.OS === "ios" ? paddingTop : 30}
+          style={Platform.OS === 'ios' ? { paddingTop: 30 } : { paddingTop: 0 }}
           data={this.props.subreddits}
           numColumns={1}
           showSeparator
