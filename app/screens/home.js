@@ -1,9 +1,16 @@
-import { FlatList, Image } from 'react-native';
+import {
+  FlatList,
+  ImageComponent,
+  ImageBackground,
+  View,
+  Text
+} from 'react-native';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import GridList from 'react-native-grid-list';
+import FastImage from 'react-native-fast-image';
 
 import allTheActions from '../actions/index';
 
@@ -29,14 +36,33 @@ class Home extends Component {
   }
 
   _renderItem = ({ item }) => {
-    //console.log(item);
+    console.log(item);
     return (
-      <Image
-        style={{ width: '100%', height: '100%', borderRadius: 0 }}
-        source={{
-          uri: item
-        }}
-      />
+      <ImageBackground
+        source={{ uri: item }}
+        style={{ width: '100%', height: '100%' }}
+      >
+        <View
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            justifyContent: 'center',
+            alignItems: 'center'
+          }}
+        >
+          <Text>Centered text</Text>
+        </View>
+      </ImageBackground>
+      // <FastImage
+      //   style={{ width: '100%', height: '100%', borderRadius: 0 }}
+      //   source={{
+      //     uri: item
+      //   }}
+      //   resizeMode={FastImage.resizeMode.contain}
+      // />
     );
   };
 
@@ -55,7 +81,7 @@ class Home extends Component {
         <GridList
           style={{ paddingTop: 30 }}
           data={this.props.subreddits}
-          numColumns={2}
+          numColumns={1}
           showSeparator
           separatorBorderColor={'#1b252e'}
           renderItem={this._renderItem}
