@@ -1,11 +1,4 @@
-import {
-  FlatList,
-  ImageComponent,
-  ImageBackground,
-  View,
-  Text,
-  Platform
-} from 'react-native';
+import { ImageBackground, View, Text, Platform } from 'react-native';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
@@ -15,12 +8,6 @@ import GridList from 'react-native-grid-list';
 import allTheActions from '../actions/index';
 
 import Background from '../components/Background';
-
-import styled from 'styled-components';
-
-const Test = styled.FlatList`
-  width: 100%;
-`;
 
 class Home extends Component {
   static propTypes = {
