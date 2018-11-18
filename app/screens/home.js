@@ -60,10 +60,12 @@ class Home extends Component {
               alignItems: 'flex-end'
             }}
           >
-            <LikeTouchableOpacity>
+            <LikeTouchableOpacity
+              onPress={() => this.handleFavButtonPress(item)}
+            >
               <Image
                 source={Heart}
-                style={{ width: 25, height: 25, tintColor: 'white' }}
+                style={{ width: 25, height: 25, tintColor: 'red' }}
               />
             </LikeTouchableOpacity>
           </View>
@@ -73,6 +75,9 @@ class Home extends Component {
     return media;
   };
 
+  handleFavButtonPress = item => {
+    console.log('CLICKED', item);
+  };
   handleLoadMore = () => {
     this.props.actions.subreddit.getSubreddit();
   };
