@@ -1,28 +1,55 @@
-import { StackNavigator, createBottomTabNavigator, BottomTabBar } from 'react-navigation';
-import Icon from 'react-native-vector-icons/FontAwesome';
-
-
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/display-name */
+/* eslint-disable react/prop-types */
+import React from 'react';
+import { Image } from 'react-native';
+import { StackNavigator, createBottomTabNavigator } from 'react-navigation';
 import Home from '../screens/home';
+import Favorite from '../screens/favorite';
+
+import HomeImage from '../static/images/home.png';
+import Heart from '../static/images/heart.png';
 
 const MainNavigator = createBottomTabNavigator(
   {
-    home: Home
+    Home: {
+      screen: Home,
+      navigationOptions: {
+        tabBarIcon: ({ tintColor }) => {
+          return (
+            <Image
+              source={HomeImage}
+              style={{ width: 25, height: 25, tintColor: tintColor }}
+            />
+          );
+        }
+      }
+    },
+    Favorite: {
+      screen: Favorite,
+      navigationOptions: {
+        tabBarIcon: ({ tintColor }) => {
+          return (
+            <Image
+              source={Heart}
+              style={{ width: 25, height: 25, tintColor: tintColor }}
+            />
+          );
+        }
+      }
+    }
   },
   {
-    initialRouteName: 'home',
+    initialRouteName: 'Home',
     tabBarOptions: {
-      activeTintColor: '#f2f2f2',
-      activeBackgroundColor: '#2EC4B6',
-      inactiveTintColor: '#666',
-      labelStyle: {
-        fontSize: 22,
-        textAlign: "center",
-        marginBottom: 10
-      },
-      tabBarIcon: ({ focused }) => {
-        return <Icon name='home' size={25} />;
+      //showLabel: false, // hide labels
+      inactiveTintColor: '#8F8F8F', // active icon color
+      activeTintColor: '#586589', // inactive icon color
+      style: {
+        backgroundColor: '#1b252e' // TabBar background
       }
     }
   }
 );
+
 export default MainNavigator;
