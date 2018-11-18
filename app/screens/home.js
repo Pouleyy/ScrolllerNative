@@ -10,7 +10,6 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import GridList from 'react-native-grid-list';
-import FastImage from 'react-native-fast-image';
 
 import allTheActions from '../actions/index';
 
@@ -56,13 +55,6 @@ class Home extends Component {
           <Text>Centered text</Text>
         </View>
       </ImageBackground>
-      // <FastImage
-      //   style={{ width: '100%', height: '100%', borderRadius: 0 }}
-      //   source={{
-      //     uri: item
-      //   }}
-      //   resizeMode={FastImage.resizeMode.contain}
-      // />
     );
   };
 
