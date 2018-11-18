@@ -1,38 +1,17 @@
-import { StackNavigator } from 'react-navigation';
+import { StackNavigator, createBottomTabNavigator } from 'react-navigation';
 
 import Home from '../screens/home';
 
-const optionsGeneral = {
-  mode: 'modal',
-  headerMode: 'none'
-};
-
-const HomeStack = StackNavigator({
-  Home: {
-    screen: Home,
-    navigationOptions: {
-      header: () => null
-    }
-  }
-  // Options: {
-  //   screen: Options,
-  //   navigationOptions: {
-  //     headerTitle: 'Options'
-  //   }
-  // },
-  // Themes: {
-  //   screen: Themes,
-  //   navigationOptions: {
-  //     headerTitle: 'Themes'
-  //   }
-  // }
-});
-
-export default StackNavigator(
+const MainNavigator = createBottomTabNavigator(
   {
-    Home: {
-      screen: HomeStack
-    }
+    home: Home
   },
-  optionsGeneral
+  {
+    initialRouteName: 'home'
+    // tabBarOptions: {
+    //   activeBackgroundColor: '#1b2e2e'
+    // }
+  }
 );
+
+export default MainNavigator;
