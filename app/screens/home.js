@@ -9,6 +9,8 @@ import allTheActions from '../actions/index';
 
 import Background from '../components/Background';
 
+import Video from 'react-native-video';
+
 class Home extends Component {
   static propTypes = {
     navigation: PropTypes.object,
@@ -23,27 +25,43 @@ class Home extends Component {
   }
 
   _renderItem = ({ item }) => {
-    //console.log(item);
-    return (
-      <ImageBackground
-        source={{ uri: item }}
-        style={{ width: '100%', height: '100%' }}
-      >
-        <View
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            justifyContent: 'center',
-            alignItems: 'center'
-          }}
+    let media;
+
+    if (item.endsWith('.webm') || item.endsWith('.mp4')) {
+      console.log('video');
+      media = (
+        <Video
+          source={{ uri: item }} // Can be a URL or a local file.
+          repeat={true}
+          style={{ width: '100%', height: '100%' }}
+          resizeMode={'stretch'}
+          //style={styles.backgroundVideo}
+        />
+      );
+    } else {
+      media = (
+        <ImageBackground
+          source={{ uri: item }}
+          style={{ width: '100%', height: 300 }}
+          resizeMode={'stretch'}
         >
-          <Text>Centered text</Text>
-        </View>
-      </ImageBackground>
-    );
+          <View
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              justifyContent: 'flex-end',
+              alignItems: 'flex-end'
+            }}
+          >
+            <Text>Centered text</Text>
+          </View>
+        </ImageBackground>
+      );
+    }
+    return media;
   };
 
   handleLoadMore = () => {
