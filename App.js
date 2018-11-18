@@ -16,7 +16,7 @@ export default class App extends React.Component {
     return (
       <Provider store={store}>
         <PersistGate loading={<Text>Loading</Text>} persistor={persistor}>
-          <StatusBar barStyle="dark-content" />
+          <StatusBar barStyle="light-content" />
           <StackNavigator />
         </PersistGate>
       </Provider>
