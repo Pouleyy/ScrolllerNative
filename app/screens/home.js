@@ -23,7 +23,7 @@ class Home extends Component {
   }
 
   _renderItem = ({ item }) => {
-    console.log(item);
+    //console.log(item);
     return (
       <ImageBackground
         source={{ uri: item }}
