@@ -1,4 +1,4 @@
-import { ImageBackground, View, Text, Platform } from 'react-native';
+import { ImageBackground, View, Image, Platform } from 'react-native';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
@@ -10,6 +10,10 @@ import allTheActions from '../actions/index';
 import Background from '../components/Background';
 
 import Video from 'react-native-video';
+
+import styled from 'styled-components';
+const LikeTouchableOpacity = styled.TouchableOpacity``;
+import Heart from '../static/images/heart.png';
 
 class Home extends Component {
   static propTypes = {
@@ -56,7 +60,12 @@ class Home extends Component {
               alignItems: 'flex-end'
             }}
           >
-            <Text>Centered text</Text>
+            <LikeTouchableOpacity>
+              <Image
+                source={Heart}
+                style={{ width: 25, height: 25, tintColor: 'white' }}
+              />
+            </LikeTouchableOpacity>
           </View>
         </ImageBackground>
       );
