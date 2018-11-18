@@ -17,7 +17,6 @@ export const getSubreddit = subreddit => dispatch => {
     url: generatedUrl
   })
     .then(res => {
-      console.log('redux', res);
       dispatch(
         getImageSubreddit({
           list: res.data
