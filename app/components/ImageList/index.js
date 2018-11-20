@@ -1,4 +1,4 @@
-import { ImageBackground, View, Image, Platform } from 'react-native';
+import { Platform } from 'react-native';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { bindActionCreators } from 'redux';
@@ -7,7 +7,9 @@ import GridList from 'react-native-grid-list';
 
 import allTheActions from '../../actions/index';
 
-import Video from 'react-native-video';
+//import Video from 'react-native-video';
+
+import MediaCard from '../MediaCard';
 
 import styled from 'styled-components';
 const LikeTouchableOpacity = styled.TouchableOpacity``;
@@ -27,50 +29,7 @@ class ImageList extends React.PureComponent {
   }
 
   _renderItem = ({ item }) => {
-    let media;
-
-    if (item.endsWith('.webm') || item.endsWith('.mp4')) {
-      console.log('video');
-      media = (
-        <Video
-          source={{ uri: item }} // Can be a URL or a local file.
-          repeat={true}
-          style={{ width: '100%', height: '100%' }}
-          resizeMode={'stretch'}
-          //style={styles.backgroundVideo}
-        />
-      );
-    } else {
-      media = (
-        <ImageBackground
-          source={{ uri: item }}
-          style={{ width: '100%', height: 300 }}
-          resizeMode={'stretch'}
-        >
-          <View
-            style={{
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
-              justifyContent: 'flex-end',
-              alignItems: 'flex-end'
-            }}
-          >
-            <LikeTouchableOpacity
-              onPress={() => this.handleFavButtonPress(item)}
-            >
-              <Image
-                source={Heart}
-                style={{ width: 25, height: 25, tintColor: 'red' }}
-              />
-            </LikeTouchableOpacity>
-          </View>
-        </ImageBackground>
-      );
-    }
-    return media;
+    return <MediaCard media={item} />;
   };
 
   handleFavButtonPress = item => {
