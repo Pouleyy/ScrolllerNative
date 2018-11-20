@@ -19,11 +19,11 @@ class ImageList extends React.PureComponent {
   static propTypes = {
     navigation: PropTypes.object,
     actions: PropTypes.object,
-    subreddits: PropTypes.array
+    media: PropTypes.array
   };
 
   componentDidMount() {
-    if (!this.props.subreddits[0]) {
+    if (!this.props.media[0]) {
       this.props.actions.subreddit.getSubreddit();
     }
   }
@@ -48,12 +48,12 @@ class ImageList extends React.PureComponent {
     return (
       <GridList
         style={Platform.OS === 'ios' ? { paddingTop: 30 } : { paddingTop: 0 }}
-        data={this.props.subreddits}
+        data={this.props.media}
         numColumns={1}
         showSeparator
         separatorBorderColor={'#1b252e'}
         renderItem={this._renderItem}
-        keyExtractor={item => item}
+        keyExtractor={item => item.url}
         onEndReached={this.handleLoadMore}
       />
     );
@@ -68,7 +68,7 @@ const mapDispatchToProps = dispatch => ({
 
 const mapStateToProps = state => {
   return {
-    subreddits: state.subreddit.data
+    media: state.subreddit.data
   };
 };
 

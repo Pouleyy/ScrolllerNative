@@ -16,20 +16,19 @@ export default class MediaCard extends React.PureComponent {
   render() {
     const { media } = this.props;
     let element;
-    if (media.endsWith('.webm') || media.endsWith('.mp4')) {
+    if (media.url.endsWith('.webm') || media.url.endsWith('.mp4')) {
       element = (
         <Video
-          source={{ uri: media }} // Can be a URL or a local file.
+          source={{ uri: media.url }} // Can be a URL or a local file.
           repeat={true}
           style={{ width: '100%', height: '100%' }}
           resizeMode={'stretch'}
-          //style={styles.backgroundVideo}
         />
       );
     } else {
       element = (
         <ImageBackground
-          source={{ uri: media }}
+          source={{ uri: media.url }}
           style={{ width: '100%', height: 300 }}
           resizeMode={'stretch'}
         >
