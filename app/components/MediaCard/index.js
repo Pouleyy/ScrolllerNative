@@ -17,7 +17,6 @@ export default class MediaCard extends React.PureComponent {
     const { media } = this.props;
     let element;
     if (media.endsWith('.webm') || media.endsWith('.mp4')) {
-      console.log('video');
       element = (
         <Video
           source={{ uri: media }} // Can be a URL or a local file.
