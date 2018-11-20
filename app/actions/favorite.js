@@ -1,6 +1,7 @@
+//OPTIONAL FOR NOW, MIGHT BE USELESS
 export const ADD_FAVORITE = 'ADD_FAVORITE';
 
-export const addFavoriteImage = url => ({
+export const addFavorite = data => ({
   type: ADD_FAVORITE,
-  url
+  data
 });

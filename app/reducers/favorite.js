@@ -1,3 +1,4 @@
+//OPTIONAL FOR NOW, MIGHT BE USELESS
 import { ADD_FAVORITE } from '../actions/favorite';
 
 const initialState = {
@@ -9,7 +10,7 @@ export default (state = initialState, action) => {
     case ADD_FAVORITE:
       return {
         ...state,
-        data: [...state.data, ...action.url]
+        data: [...state.data, ...action.data]
       };
     default:
       return state;
