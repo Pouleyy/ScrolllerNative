@@ -6,7 +6,7 @@ import ImageCard from '../ImageCard';
 export default class MediaCard extends React.PureComponent {
   static propTypes = {
     navigation: PropTypes.object,
-    media: PropTypes.string
+    media: PropTypes.object
   };
 
   render() {
