@@ -1,3 +1,4 @@
+import uuidv4 from 'uuid/v4';
 import { GET_SUBREDDIT } from '../actions/subreddit';
 
 const initialState = {
@@ -8,7 +9,7 @@ export default (state = initialState, action) => {
   switch (action.type) {
     case GET_SUBREDDIT:
       action.payload.list = action.payload.list.map(url => {
-        return { url: url, isFavorite: true };
+        return { id: uuidv4(), url: url, isFavorite: false };
       });
       return {
         ...state,
