@@ -27,8 +27,8 @@ export default class ImageCard extends React.PureComponent {
             position: 'absolute',
             top: 0,
             left: 0,
-            right: 0,
-            bottom: 0,
+            right: 10,
+            bottom: 10,
             justifyContent: 'flex-end',
             alignItems: 'flex-end'
           }}
