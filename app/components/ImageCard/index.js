@@ -1,16 +1,14 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { ImageBackground, View, Image } from 'react-native';
+import { ImageBackground, View } from 'react-native';
 
-import styled from 'styled-components';
-import Heart from '../../static/images/heart.png';
-
-const LikeTouchableOpacity = styled.TouchableOpacity``;
+import Heart from '../Heart';
 
 export default class ImageCard extends React.PureComponent {
   static propTypes = {
     navigation: PropTypes.object,
-    media: PropTypes.object
+    media: PropTypes.object,
+    actions: PropTypes.object
   };
 
   render() {
@@ -33,14 +31,7 @@ export default class ImageCard extends React.PureComponent {
             alignItems: 'flex-end'
           }}
         >
-          <LikeTouchableOpacity
-          //onPress={() => this.handleFavButtonPress(media)}
-          >
-            <Image
-              source={Heart}
-              style={{ width: 25, height: 25, tintColor: 'red' }}
-            />
-          </LikeTouchableOpacity>
+          <Heart media={media} />
         </View>
       </ImageBackground>
     );
