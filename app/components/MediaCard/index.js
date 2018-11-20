@@ -1,10 +1,9 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { ImageBackground, View, Image } from 'react-native';
+import VideoCard from '../VideoCard';
 
 import styled from 'styled-components';
 const LikeTouchableOpacity = styled.TouchableOpacity``;
-import Video from 'react-native-video';
 import Heart from '../../static/images/heart.png';
 
 export default class MediaCard extends React.PureComponent {
@@ -17,14 +16,7 @@ export default class MediaCard extends React.PureComponent {
     const { media } = this.props;
     let element;
     if (media.url.endsWith('.webm') || media.url.endsWith('.mp4')) {
-      element = (
-        <Video
-          source={{ uri: media.url }} // Can be a URL or a local file.
-          repeat={true}
-          style={{ width: '100%', height: '100%' }}
-          resizeMode={'stretch'}
-        />
-      );
+      element = <VideoCard media={media} />;
     } else {
       element = (
         <ImageBackground
