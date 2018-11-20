@@ -7,13 +7,7 @@ import GridList from 'react-native-grid-list';
 
 import allTheActions from '../../actions/index';
 
-//import Video from 'react-native-video';
-
 import MediaCard from '../MediaCard';
-
-import styled from 'styled-components';
-const LikeTouchableOpacity = styled.TouchableOpacity``;
-import Heart from '../../static/images/heart.png';
 
 class ImageList extends React.PureComponent {
   static propTypes = {
@@ -32,9 +26,6 @@ class ImageList extends React.PureComponent {
     return <MediaCard media={item} />;
   };
 
-  handleFavButtonPress = item => {
-    console.log('CLICKED', item);
-  };
   handleLoadMore = () => {
     this.props.actions.subreddit.getSubreddit();
   };
