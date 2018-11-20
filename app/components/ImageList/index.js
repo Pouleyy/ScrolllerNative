@@ -44,7 +44,7 @@ class ImageList extends React.PureComponent {
         showSeparator
         separatorBorderColor={'#1b252e'}
         renderItem={this._renderItem}
-        keyExtractor={item => item.url}
+        keyExtractor={item => item.id}
         onEndReached={this.handleLoadMore}
       />
     );
