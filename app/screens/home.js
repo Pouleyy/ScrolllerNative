@@ -17,20 +17,3 @@ export default class Home extends Component {
     );
   }
 }
-
-// const mapDispatchToProps = dispatch => ({
-//   actions: {
-//     subreddit: bindActionCreators(allTheActions.subreddit, dispatch)
-//   }
-// });
-
-// const mapStateToProps = state => {
-//   return {
-//     subreddits: state.subreddit.data
-//   };
-// };
-
-// export default connect(
-//   mapStateToProps,
-//   mapDispatchToProps
-// )(Home);
