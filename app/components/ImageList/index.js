@@ -1,16 +1,9 @@
-import {
-  Platform
-} from 'react-native';
+import { Platform } from 'react-native';
 import PropTypes from 'prop-types';
 import React from 'react';
-import {
-  bindActionCreators
-} from 'redux';
-import {
-  connect
-} from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import GridList from 'react-native-grid-list';
-import getSubReddit from '../../actions/subreddit';
 
 import allTheActions from '../../actions/index';
 
@@ -19,7 +12,7 @@ import allTheActions from '../../actions/index';
 import MediaCard from '../MediaCard';
 
 import styled from 'styled-components';
-const LikeTouchableOpacity = styled.TouchableOpacity ``;
+const LikeTouchableOpacity = styled.TouchableOpacity``;
 import Heart from '../../static/images/heart.png';
 
 class ImageList extends React.PureComponent {
@@ -31,58 +24,37 @@ class ImageList extends React.PureComponent {
 
   componentDidMount() {
     if (!this.props.subreddits[0]) {
-      getSubReddit();
+      this.props.actions.subreddit.getSubreddit();
     }
   }
 
-  _renderItem = ({
-    item
-  }) => {
-    return <MediaCard media = {
-      item
-    }
-    />;
+  _renderItem = ({ item }) => {
+    return <MediaCard media={item} />;
   };
 
   handleFavButtonPress = item => {
     console.log('CLICKED', item);
   };
   handleLoadMore = () => {
-    getSubReddit();
+    this.props.actions.subreddit.getSubreddit();
   };
 
   handlePressButton = () => {
-    getSubReddit();
+    this.props.actions.subreddit.getSubreddit();
   };
 
   render() {
     //console.log('ALLLOOOOOO', this.props.subreddits);
-    return ( <
-      GridList style = {
-        Platform.OS === 'ios' ? {
-          paddingTop: 30
-        } : {
-          paddingTop: 0
-        }
-      }
-      data = {
-        this.props.subreddits
-      }
-      numColumns = {
-        1
-      }
-      showSeparator separatorBorderColor = {
-        '#1b252e'
-      }
-      renderItem = {
-        this._renderItem
-      }
-      keyExtractor = {
-        item => item
-      }
-      onEndReached = {
-        this.handleLoadMore
-      }
+    return (
+      <GridList
+        style={Platform.OS === 'ios' ? { paddingTop: 30 } : { paddingTop: 0 }}
+        data={this.props.subreddits}
+        numColumns={1}
+        showSeparator
+        separatorBorderColor={'#1b252e'}
+        renderItem={this._renderItem}
+        keyExtractor={item => item}
+        onEndReached={this.handleLoadMore}
       />
     );
   }
