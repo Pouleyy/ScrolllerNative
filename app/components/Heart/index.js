@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Image } from 'react-native';
@@ -10,15 +10,22 @@ import styled from 'styled-components';
 
 const LikeTouchableOpacity = styled.TouchableOpacity``;
 
-class Heart extends React.PureComponent {
+class Heart extends Component {
   static propTypes = {
     navigation: PropTypes.object,
     media: PropTypes.object,
     actions: PropTypes.object
   };
 
+  state = {
+    isFavorite: false
+  };
+
   handleFavButtonPress = media => {
     //console.log(media);
+    media.isFavorite
+      ? this.setState({ isFavorite: true })
+      : this.setState({ isFavorite: false });
     const { actions } = this.props;
     media.isFavorite
       ? actions.subreddit.removeFavorite(media)
@@ -32,7 +39,7 @@ class Heart extends React.PureComponent {
         <Image
           source={HeartImage}
           style={
-            media.isFavorite
+            media.isFavorite || this.state.isFavorite
               ? { width: 25, height: 25, tintColor: 'red' }
               : { width: 25, height: 25, tintColor: 'white' }
           }
