@@ -35,7 +35,6 @@ class ImageList extends React.PureComponent {
   };
 
   render() {
-    //console.log('ALLLOOOOOO', this.props.subreddits);
     return (
       <GridList
         style={Platform.OS === 'ios' ? { paddingTop: 30 } : { paddingTop: 0 }}
