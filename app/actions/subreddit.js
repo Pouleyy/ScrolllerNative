@@ -3,6 +3,8 @@
 import axios from 'axios';
 
 export const GET_SUBREDDIT = 'GET_SUBREDDIT';
+export const ADD_FAVORITE = 'ADD_FAVORITE';
+export const REMOVE_FAVORITE = 'REMOVE_FAVORITE';
 
 export const getImageSubreddit = image => ({
   type: GET_SUBREDDIT,
@@ -11,7 +13,7 @@ export const getImageSubreddit = image => ({
 
 export const getSubreddit = subreddit => dispatch => {
   const generatedUrl = 'https://scrolller.com/api/random/winterporn';
-  console.log('ttest', subreddit);
+  console.log('sub send', subreddit);
   axios({
     method: 'GET',
     url: generatedUrl
@@ -25,3 +27,13 @@ export const getSubreddit = subreddit => dispatch => {
     })
     .catch(err => console.log(err));
 };
+
+export const addFavorite = data => ({
+  type: ADD_FAVORITE,
+  data
+});
+
+export const removeFavorite = data => ({
+  type: REMOVE_FAVORITE,
+  data
+});

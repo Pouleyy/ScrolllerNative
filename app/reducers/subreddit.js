@@ -1,5 +1,10 @@
+/* eslint-disable no-case-declarations */
 import uuidv4 from 'uuid/v4';
-import { GET_SUBREDDIT } from '../actions/subreddit';
+import {
+  GET_SUBREDDIT,
+  ADD_FAVORITE,
+  REMOVE_FAVORITE
+} from '../actions/subreddit';
 
 const initialState = {
   data: []
@@ -14,6 +19,24 @@ export default (state = initialState, action) => {
       return {
         ...state,
         data: [...state.data, ...action.payload.list]
+      };
+    case ADD_FAVORITE:
+      const addCopy = [...state.data];
+      addCopy.map(media => {
+        if (media.id == action.data.id) media.isFavorite = true;
+      });
+      return {
+        ...state,
+        data: [...addCopy]
+      };
+    case REMOVE_FAVORITE:
+      const removeCopy = [...state.data];
+      removeCopy.map(media => {
+        if (media.id == action.data.id) media.isFavorite = false;
+      });
+      return {
+        ...state,
+        data: [...removeCopy]
       };
     default:
       return state;
