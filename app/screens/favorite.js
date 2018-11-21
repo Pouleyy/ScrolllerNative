@@ -1,4 +1,4 @@
-import { ImageBackground, View, Text, Platform } from 'react-native';
+import { Platform } from 'react-native';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
@@ -7,60 +7,32 @@ import GridList from 'react-native-grid-list';
 
 import allTheActions from '../actions/index';
 import Background from '../components/Background';
+import MediaCard from '../components/MediaCard';
 
 class Favorite extends Component {
   static propTypes = {
     navigation: PropTypes.object,
     actions: PropTypes.object,
-    favorite: PropTypes.array
+    media: PropTypes.array
   };
-
-  componentDidMount() {
-    if (this.props.favorite.length != 0) {
-      this.props.actions.favorite.addFavoriteImage();
-    }
-  }
 
   _renderItem = ({ item }) => {
-    //console.log(item);
-    return (
-      <ImageBackground
-        source={{ uri: item }}
-        style={{ width: '100%', height: '100%' }}
-      >
-        <View
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            justifyContent: 'center',
-            alignItems: 'center'
-          }}
-        >
-          <Text>Centered text</Text>
-        </View>
-      </ImageBackground>
-    );
+    return <MediaCard media={item} />;
   };
 
-  // handleLoadMore = () => {
-
-  // };
-
   render() {
+    const { media } = this.props;
+    const fav = media.filter(x => x.isFavorite);
     return (
       <Background>
         <GridList
           style={Platform.OS === 'ios' ? { paddingTop: 30 } : { paddingTop: 0 }}
-          data={this.props.favorite}
+          data={fav}
           numColumns={1}
           showSeparator
           separatorBorderColor={'#1b252e'}
           renderItem={this._renderItem}
-          keyExtractor={item => item}
-          onEndReached={this.handleLoadMore}
+          keyExtractor={item => item.id}
         />
       </Background>
     );
@@ -69,13 +41,13 @@ class Favorite extends Component {
 
 const mapDispatchToProps = dispatch => ({
   actions: {
-    favorite: bindActionCreators(allTheActions.favorite, dispatch)
+    favorite: bindActionCreators(allTheActions.subreddit, dispatch)
   }
 });
 
 const mapStateToProps = state => {
   return {
-    favorite: state.favorite.data
+    media: state.subreddit.data
   };
 };
 
