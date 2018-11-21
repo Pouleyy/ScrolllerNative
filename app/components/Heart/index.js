@@ -1,13 +1,16 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { Image } from 'react-native';
+import allTheActions from '../../actions/index';
 
 import HeartImage from '../../static/images/heart.png';
 import styled from 'styled-components';
 
 const LikeTouchableOpacity = styled.TouchableOpacity``;
 
-export default class Heart extends React.PureComponent {
+class Heart extends React.PureComponent {
   static propTypes = {
     navigation: PropTypes.object,
     media: PropTypes.object,
@@ -15,9 +18,11 @@ export default class Heart extends React.PureComponent {
   };
 
   handleFavButtonPress = media => {
-    //Need to update the Redux state RLY
-    media.isFavorite = !media.isFavorite;
-    this.forceUpdate();
+    //console.log(media);
+    const { actions } = this.props;
+    media.isFavorite
+      ? actions.subreddit.removeFavorite(media)
+      : actions.subreddit.addFavorite(media);
   };
 
   render() {
@@ -36,3 +41,14 @@ export default class Heart extends React.PureComponent {
     );
   }
 }
+
+const mapDispatchToProps = dispatch => ({
+  actions: {
+    subreddit: bindActionCreators(allTheActions.subreddit, dispatch)
+  }
+});
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(Heart);
