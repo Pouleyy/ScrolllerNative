@@ -1,9 +1,10 @@
-import { Platform } from 'react-native';
+import { Platform, View } from 'react-native';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import GridList from 'react-native-grid-list';
+import { SearchBar } from 'react-native-elements';
 
 import allTheActions from '../../actions/index';
 
