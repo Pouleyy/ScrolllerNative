@@ -4,7 +4,7 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import GridList from 'react-native-grid-list';
-import { SearchBar } from 'react-native-elements';
+import { Searchbar } from 'react-native-paper';
 
 import allTheActions from '../../actions/index';
 
@@ -16,7 +16,6 @@ class ImageList extends React.PureComponent {
     actions: PropTypes.object,
     media: PropTypes.array
   };
-
   componentDidMount() {
     if (!this.props.media[0]) {
       this.props.actions.subreddit.getSubreddit();
@@ -40,7 +39,17 @@ class ImageList extends React.PureComponent {
       <View
         style={Platform.OS === 'ios' ? { paddingTop: 30 } : { paddingTop: 0 }}
       >
-        <SearchBar round searchIcon={{ size: 24 }} placeholder="Type Here..." />
+        <Searchbar
+          theme={{
+            colors: {
+              surface: '#1b252e',
+              text: '#FFFFFF',
+              placeholder: '#FFFFFF'
+            }
+          }}
+          searchIcon={{ size: 24 }}
+          placeholder="Enter a subreddit here"
+        />
         <GridList
           data={this.props.media}
           numColumns={1}
