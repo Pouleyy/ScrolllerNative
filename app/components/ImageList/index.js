@@ -36,16 +36,20 @@ class ImageList extends React.PureComponent {
 
   render() {
     return (
-      <GridList
+      <View
         style={Platform.OS === 'ios' ? { paddingTop: 30 } : { paddingTop: 0 }}
-        data={this.props.media}
-        numColumns={1}
-        showSeparator
-        separatorBorderColor={'#1b252e'}
-        renderItem={this._renderItem}
-        keyExtractor={item => item.id}
-        onEndReached={this.handleLoadMore}
-      />
+      >
+        <SearchBar round searchIcon={{ size: 24 }} placeholder="Type Here..." />
+        <GridList
+          data={this.props.media}
+          numColumns={1}
+          showSeparator
+          separatorBorderColor={'#1b252e'}
+          renderItem={this._renderItem}
+          keyExtractor={item => item.id}
+          onEndReached={this.handleLoadMore}
+        />
+      </View>
     );
   }
 }
