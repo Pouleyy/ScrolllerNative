@@ -27,8 +27,8 @@ class Heart extends Component {
 
   handleFavButtonPress = media => {
     media.isFavorite
-      ? this.setState({ isFavorite: true })
-      : this.setState({ isFavorite: false });
+      ? this.setState({ isFavorite: false })
+      : this.setState({ isFavorite: true });
     const { actions } = this.props;
     media.isFavorite
       ? actions.subreddit.removeFavorite(media)
