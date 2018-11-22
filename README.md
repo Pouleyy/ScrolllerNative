@@ -1,14 +1,14 @@
 # Scrolller ReactNative
 
-Application mobile du site [Scrolller](https://scrolller.com/).
+Réaliser l'application mobile du site [Scrolller](https://scrolller.com/).
 
 ## Fonctionalités
 
-- favori
-- recherche
+- Pouvoir choisir une catégorie d'image de subredit et en afficher le contenu sur smartphone  (images, gifs, vidéos)
+- Posssibilité de mettre en favori le contenu
 
 ## Outils utilisé
-
+  
 - [Redux](https://redux.js.org/), [React-Redux](https://github.com/reduxjs/react-redux), [Redux-Persist](https://github.com/rt2zz/redux-persist#readme)
 - [Axios](https://github.com/axios/axios)
 - [Styled-Components](https://www.styled-components.com/)
@@ -19,8 +19,8 @@ Application mobile du site [Scrolller](https://scrolller.com/).
 
 ## Équipe
 
-Prenom Nom | role
+Prénom Nom | rôle
 -----------|-----
-Kévin Harismendy | Chef de projet, Developpeur
-Yann Avondo | Developpeur, Spéctateur1
-Nolan Vieira | Developpeur, Spéctateur2
+Kévin Harismendy | Chef de projet, Développeur
+Yann Avondo | Développeur, livreur de café
+Nolan Vieira | Développeur, bug man
