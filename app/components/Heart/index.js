@@ -21,8 +21,11 @@ class Heart extends Component {
     isFavorite: false
   };
 
+  componentDidMount() {
+    this.setState({ isFavorite: this.props.media.isFavorite });
+  }
+
   handleFavButtonPress = media => {
-    //console.log(media);
     media.isFavorite
       ? this.setState({ isFavorite: true })
       : this.setState({ isFavorite: false });
@@ -39,7 +42,7 @@ class Heart extends Component {
         <Image
           source={HeartImage}
           style={
-            media.isFavorite || this.state.isFavorite
+            this.state.isFavorite
               ? { width: 25, height: 25, tintColor: 'red' }
               : { width: 25, height: 25, tintColor: 'white' }
           }
