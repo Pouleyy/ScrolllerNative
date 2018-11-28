@@ -1,4 +1,4 @@
-import { Platform, View } from 'react-native';
+import { Platform, View, Text } from 'react-native';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { bindActionCreators } from 'redux';
@@ -22,9 +22,9 @@ class ImageList extends React.PureComponent {
   };
 
   componentDidMount() {
-    if (!this.props.media[0]) {
-      this.props.actions.subreddit.getSubreddit();
-    }
+    // if (!this.props.media[0]) {
+    //   this.props.actions.subreddit.getSubreddit();
+    // }
   }
 
   _renderItem = ({ item }) => {
@@ -65,15 +65,21 @@ class ImageList extends React.PureComponent {
           onIconPress={() => this.handleSearchButton(subToSeach)}
           ref={search => (this.search = search)}
         />
-        <GridList
-          data={this.props.media}
-          numColumns={1}
-          showSeparator
-          separatorBorderColor={'#1b252e'}
-          renderItem={this._renderItem}
-          keyExtractor={item => item.id}
-          onEndReached={this.handleLoadMore}
-        />
+        {!this.props.media[0] ? (
+          <Text style={{ justifyContent: 'center', alignItems: 'center' }}>
+            PLEASE ENTER A SUB
+          </Text>
+        ) : (
+          <GridList
+            data={this.props.media}
+            numColumns={1}
+            showSeparator
+            separatorBorderColor={'#1b252e'}
+            renderItem={this._renderItem}
+            keyExtractor={item => item.id}
+            onEndReached={this.handleLoadMore}
+          />
+        )}
       </View>
     );
   }
