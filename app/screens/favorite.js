@@ -47,7 +47,7 @@ const mapDispatchToProps = dispatch => ({
 
 const mapStateToProps = state => {
   return {
-    media: state.subreddit.data
+    media: state.favorite.data
   };
 };
 
