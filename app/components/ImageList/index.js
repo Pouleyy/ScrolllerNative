@@ -63,6 +63,7 @@ class ImageList extends React.PureComponent {
             subToSeach = query;
           }}
           onIconPress={() => this.handleSearchButton(subToSeach)}
+          ref={search => (this.search = search)}
         />
         <GridList
           data={this.props.media}
