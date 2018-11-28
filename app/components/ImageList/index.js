@@ -16,6 +16,11 @@ class ImageList extends React.PureComponent {
     actions: PropTypes.object,
     media: PropTypes.array
   };
+
+  state = {
+    actualSub: ''
+  };
+
   componentDidMount() {
     if (!this.props.media[0]) {
       this.props.actions.subreddit.getSubreddit();
@@ -27,12 +32,13 @@ class ImageList extends React.PureComponent {
   };
 
   handleLoadMore = () => {
-    this.props.actions.subreddit.getSubreddit();
+    this.props.actions.subreddit.getSubreddit(this.state.actualSub);
   };
 
   handleSearchButton = subToSeach => {
     const refresh = true;
     this.search.clear();
+    this.setState({ actualSub: subToSeach });
     this.props.actions.subreddit.getSubreddit(subToSeach);
   };
 
