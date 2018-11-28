@@ -6,7 +6,7 @@
     "no-unused-vars": 2,
     "no-trailing-spaces": 2,
     "prefer-template": 2,
-    "quotes": [2, "single", { "avoidEscape": true }],
+    "quotes": [2, "single", { "avoidEscape": true, "allowTemplateLiterals": true }],
     "react/no-redundant-should-component-update": 2,
     "react/sort-comp": 2,
     "semi": [2, "always"]
