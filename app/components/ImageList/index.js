@@ -30,11 +30,14 @@ class ImageList extends React.PureComponent {
     this.props.actions.subreddit.getSubreddit();
   };
 
-  handlePressButton = () => {
-    this.props.actions.subreddit.getSubreddit();
+  handleSearchButton = subToSeach => {
+    const refresh = true;
+    this.search.clear();
+    this.props.actions.subreddit.getSubreddit(subToSeach);
   };
 
   render() {
+    let subToSeach;
     return (
       <View
         style={Platform.OS === 'ios' ? { paddingTop: 30 } : { paddingTop: 0 }}
@@ -49,6 +52,11 @@ class ImageList extends React.PureComponent {
           }}
           searchIcon={{ size: 24 }}
           placeholder="Enter a subreddit here"
+          value={subToSeach}
+          onChangeText={query => {
+            subToSeach = query;
+          }}
+          onIconPress={() => this.handleSearchButton(subToSeach)}
         />
         <GridList
           data={this.props.media}

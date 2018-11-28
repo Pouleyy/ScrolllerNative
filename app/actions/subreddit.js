@@ -12,7 +12,7 @@ export const getImageSubreddit = image => ({
 });
 
 export const getSubreddit = subreddit => dispatch => {
-  const generatedUrl = 'https://scrolller.com/api/random/winterporn';
+  const generatedUrl = `https://scrolller.com/api/random/${subreddit}`;
   console.log('sub send', subreddit);
   axios({
     method: 'GET',
