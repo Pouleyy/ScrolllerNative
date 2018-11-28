@@ -11,9 +11,9 @@ export const getImageSubreddit = image => ({
   payload: image
 });
 
-export const getSubreddit = subreddit => dispatch => {
+export const getSubreddit = (subreddit, refresh) => dispatch => {
   const generatedUrl = `https://scrolller.com/api/random/${subreddit}`;
-  console.log('sub send', subreddit);
+  console.log('sub send', generatedUrl);
   axios({
     method: 'GET',
     url: generatedUrl
@@ -21,7 +21,8 @@ export const getSubreddit = subreddit => dispatch => {
     .then(res => {
       dispatch(
         getImageSubreddit({
-          list: res.data
+          list: res.data,
+          refresh: refresh
         })
       );
     })

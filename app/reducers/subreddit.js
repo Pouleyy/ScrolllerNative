@@ -16,10 +16,15 @@ export default (state = initialState, action) => {
       action.payload.list = action.payload.list.map(url => {
         return { id: uuidv4(), url: url, isFavorite: false };
       });
-      return {
-        ...state,
-        data: [...state.data, ...action.payload.list]
-      };
+      return action.payload.refresh
+        ? {
+            ...state,
+            data: [...action.payload.list]
+          }
+        : {
+            ...state,
+            data: [...state.data, ...action.payload.list]
+          };
     case ADD_FAVORITE:
       const addCopy = [...state.data];
       addCopy.map(media => {

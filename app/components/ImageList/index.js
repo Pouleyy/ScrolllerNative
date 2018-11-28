@@ -39,7 +39,7 @@ class ImageList extends React.PureComponent {
     const refresh = true;
     this.search.clear();
     this.setState({ actualSub: subToSeach });
-    this.props.actions.subreddit.getSubreddit(subToSeach);
+    this.props.actions.subreddit.getSubreddit(subToSeach, refresh);
   };
 
   render() {
