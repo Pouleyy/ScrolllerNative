@@ -1,6 +1,6 @@
-import PropTypes from 'prop-types';
 import React from 'react';
 import Video from 'react-native-video';
+import PropTypes from 'prop-types';
 
 export default class VideoCard extends React.PureComponent {
   static propTypes = {

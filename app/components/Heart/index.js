@@ -1,10 +1,10 @@
-import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import { Image } from 'react-native';
-import allTheActions from '../../actions/index';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
+import allTheActions from '../../actions/index';
 import HeartImage from '../../static/images/heart.png';
 import styled from 'styled-components';
 

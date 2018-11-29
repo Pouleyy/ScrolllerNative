@@ -1,6 +1,6 @@
-import PropTypes from 'prop-types';
 import React from 'react';
 import { ImageBackground, View } from 'react-native';
+import PropTypes from 'prop-types';
 
 import Heart from '../Heart';
 

@@ -1,9 +1,9 @@
-import PropTypes from 'prop-types';
-import { FlatList } from 'react-native';
 import React, { Component } from 'react';
+import { FlatList } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { SafeAreaView } from 'react-navigation';
+import PropTypes from 'prop-types';
 
 import allTheActions from '../actions/index';
 import Background from '../components/Background';

@@ -1,11 +1,10 @@
 import { View, Text, FlatList } from 'react-native';
-import PropTypes from 'prop-types';
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import allTheActions from '../../actions/index';
-
 import MediaCard from '../MediaCard';
 import SearchBar from '../Searchbar';
 
