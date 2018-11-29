@@ -1,9 +1,8 @@
-import { Platform, View, Text } from 'react-native';
+import { View, Text, FlatList } from 'react-native';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import GridList from 'react-native-grid-list';
 
 import allTheActions from '../../actions/index';
 
@@ -44,11 +43,10 @@ class ImageList extends React.PureComponent {
             PLEASE ENTER A SUB
           </Text>
         ) : (
-          <GridList
+          <FlatList
             data={this.props.media}
             numColumns={1}
             showSeparator
-            separatorBorderColor={'#1b252e'}
             renderItem={this._renderItem}
             keyExtractor={item => item.id}
             onEndReached={this.handleLoadMore}

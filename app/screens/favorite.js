@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { FlatList } from 'react-native';
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -24,15 +25,16 @@ class Favorite extends Component {
     const fav = media.filter(x => x.isFavorite);
     return (
       <Background>
-        <GridList
-          style={Platform.OS === 'ios' ? { paddingTop: 30 } : { paddingTop: 0 }}
-          data={fav}
-          numColumns={1}
-          showSeparator
-          separatorBorderColor={'#1b252e'}
-          renderItem={this._renderItem}
-          keyExtractor={item => item.id}
-        />
+        <SafeAreaView>
+          <FlatList
+            data={fav}
+            numColumns={1}
+            showSeparator
+            separatorBorderColor={'#1b252e'}
+            renderItem={this._renderItem}
+            keyExtractor={item => item.id}
+          />
+        </SafeAreaView>
       </Background>
     );
   }
