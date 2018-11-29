@@ -9,12 +9,12 @@ Réaliser l'application mobile du site [Scrolller](https://scrolller.com/).
 
 ## Outils utilisé
   
-- [Redux](https://redux.js.org/), [React-Redux](https://github.com/reduxjs/react-redux), [Redux-Persist](https://github.com/rt2zz/redux-persist#readme)
 - [Axios](https://github.com/axios/axios)
-- [Styled-Components](https://www.styled-components.com/)
-- [React-Native-Video](https://github.com/react-native-community/react-native-video#readme)
 - [React-Native-Grid-List](https://github.com/gusgard/react-native-grid-list#readme)
+- [React-Native-Video](https://github.com/react-native-community/react-native-video#readme)
 - [React-Navigation](https://github.com/react-navigation/react-navigation#readme)
+- [Redux](https://redux.js.org/), [React-Redux](https://github.com/reduxjs/react-redux), [Redux-Persist](https://github.com/rt2zz/redux-persist#readme)
+- [Styled-Components](https://www.styled-components.com/)
 - [Uuid](https://github.com/kelektiv/node-uuid#readme)
 
 ## Équipe
