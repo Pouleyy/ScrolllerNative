@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import { SafeAreaView } from 'react-navigation';
 
 import Background from '../components/Background';
 import ImageList from '../components/ImageList';
@@ -12,7 +13,9 @@ export default class Home extends Component {
   render() {
     return (
       <Background>
-        <ImageList />
+        <SafeAreaView>
+          <ImageList />
+        </SafeAreaView>
       </Background>
     );
   }

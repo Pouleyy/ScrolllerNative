@@ -1,9 +1,8 @@
-import { Platform } from 'react-native';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import GridList from 'react-native-grid-list';
+import { SafeAreaView } from 'react-navigation';
 
 import allTheActions from '../actions/index';
 import Background from '../components/Background';
