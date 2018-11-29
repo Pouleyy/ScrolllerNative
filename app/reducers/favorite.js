@@ -17,8 +17,8 @@ export default (state = initialState, action) => {
       };
     case REMOVE_FAVORITE:
       const removeCopy = [...state.data];
-      removeCopy.map(media => {
-        if (media.id == action.data.id) media.isFavorite = false;
+      removeCopy.filter(media => {
+        media.id !== action.data.id;
       });
       return {
         ...state,
