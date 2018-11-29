@@ -4,11 +4,11 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import GridList from 'react-native-grid-list';
-import { Searchbar } from 'react-native-paper';
 
 import allTheActions from '../../actions/index';
 
 import MediaCard from '../MediaCard';
+import SearchBar from '../Searchbar';
 
 class ImageList extends React.PureComponent {
   static propTypes = {
@@ -21,12 +21,6 @@ class ImageList extends React.PureComponent {
     actualSub: ''
   };
 
-  componentDidMount() {
-    // if (!this.props.media[0]) {
-    //   this.props.actions.subreddit.getSubreddit();
-    // }
-  }
-
   _renderItem = ({ item }) => {
     return <MediaCard media={item} />;
   };
@@ -35,36 +29,18 @@ class ImageList extends React.PureComponent {
     this.props.actions.subreddit.getSubreddit(this.state.actualSub);
   };
 
-  handleSearchButton = subToSeach => {
+  onSubChange = newSub => {
     const refresh = true;
-    this.search.clear();
-    this.setState({ actualSub: subToSeach });
-    this.props.actions.subreddit.getSubreddit(subToSeach, refresh);
+    this.setState({ actualSub: newSub });
+    this.props.actions.subreddit.getSubreddit(newSub, refresh);
   };
 
   render() {
-    let subToSeach;
     return (
       <View
         style={Platform.OS === 'ios' ? { paddingTop: 30 } : { paddingTop: 0 }}
       >
-        <Searchbar
-          theme={{
-            colors: {
-              surface: '#1b252e',
-              text: '#FFFFFF',
-              placeholder: '#FFFFFF'
-            }
-          }}
-          searchIcon={{ size: 24 }}
-          placeholder="Enter a subreddit here"
-          value={subToSeach}
-          onChangeText={query => {
-            subToSeach = query;
-          }}
-          onIconPress={() => this.handleSearchButton(subToSeach)}
-          ref={search => (this.search = search)}
-        />
+        <SearchBar onSubChange={res => this.onSubChange(res)} />
         {!this.props.media[0] ? (
           <Text style={{ justifyContent: 'center', alignItems: 'center' }}>
             PLEASE ENTER A SUB
