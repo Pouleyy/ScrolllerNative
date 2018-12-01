@@ -14,13 +14,11 @@ export default (state = initialState, action) => {
         data: [...state.data, action.data]
       };
     case REMOVE_FAVORITE:
-      const removeCopy = [...state.data];
-      removeCopy.filter(media => {
-        media.id !== action.data.id;
-      });
+      const stateCopy = [...state.data];
+      const cleanState = stateCopy.filter(media => media.id != action.data.id);
       return {
         ...state,
-        data: [...removeCopy]
+        data: [...cleanState]
       };
     default:
       return state;
