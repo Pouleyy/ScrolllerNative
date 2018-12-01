@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { Image } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import LottieView from 'lottie-react-native';
+import styled from 'styled-components';
 
 import allTheActions from '../../actions/index';
-import HeartImage from '../../static/images/heart.png';
-import styled from 'styled-components';
+import HeartAnimation from '../../static/animation/heart.json';
 
 const LikeTouchableOpacity = styled.TouchableOpacity``;
 
@@ -18,18 +18,31 @@ class Heart extends Component {
   };
 
   state = {
-    isFavorite: false
+    speed: 0
   };
 
   componentDidMount() {
-    this.setState({ isFavorite: this.props.media.isFavorite });
+    this.setState({ speed: this.props.media.isFavorite ? -1 : 1 });
+    if (this.props.media.isFavorite) this.animation.play(80, 80);
+  }
+
+  componentWillUnmount() {
+    if (this.timerHandle) {
+      // eslint-disable-next-line no-undef
+      clearTimeout(this.timerHandle);
+      this.timerHandle = 0;
+    }
   }
 
   handleFavButtonPress = media => {
-    media.isFavorite
-      ? this.setState({ isFavorite: false })
-      : this.setState({ isFavorite: true });
+    this.animation.play();
     const { actions } = this.props;
+    // eslint-disable-next-line no-undef
+    this.timerHandle = setTimeout(() => {
+      media.isFavorite
+        ? this.setState({ speed: -1 })
+        : this.setState({ speed: 1 });
+    }, 1500);
     media.isFavorite
       ? actions.subreddit.removeFavorite(media)
       : actions.subreddit.addFavorite(media);
@@ -38,14 +51,21 @@ class Heart extends Component {
   render() {
     const { media } = this.props;
     return (
-      <LikeTouchableOpacity onPress={() => this.handleFavButtonPress(media)}>
-        <Image
-          source={HeartImage}
-          style={
-            this.state.isFavorite
-              ? { width: 25, height: 25, tintColor: 'red' }
-              : { width: 25, height: 25, tintColor: 'white' }
-          }
+      <LikeTouchableOpacity
+        onPress={() => this.handleFavButtonPress(media)}
+        style={{ width: 80, height: 60 }}
+      >
+        <LottieView
+          ref={animation => {
+            this.animation = animation;
+          }}
+          source={HeartAnimation}
+          loop={false}
+          speed={this.state.speed}
+          style={{
+            width: 80,
+            height: 80
+          }}
         />
       </LikeTouchableOpacity>
     );
