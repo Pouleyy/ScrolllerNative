@@ -8,8 +8,6 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case ADD_FAVORITE:
-      console.log('FAV REDUCER');
-      console.log(action.data);
       action.data.isFavorite = true;
       return {
         ...state,
