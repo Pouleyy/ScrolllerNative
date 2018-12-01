@@ -13,7 +13,7 @@ export default class Home extends Component {
   render() {
     return (
       <Background>
-        <SafeAreaView>
+        <SafeAreaView style={{ flex: 1 }}>
           <ImageList />
         </SafeAreaView>
       </Background>

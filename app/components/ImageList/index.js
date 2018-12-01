@@ -35,7 +35,7 @@ class ImageList extends React.PureComponent {
 
   render() {
     return (
-      <View>
+      <View style={{ flex: 1 }}>
         <SearchBar onSubChange={res => this.onSubChange(res)} />
         {!this.props.media[0] ? (
           <Text style={{ justifyContent: 'center', alignItems: 'center' }}>
