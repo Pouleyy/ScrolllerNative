@@ -22,11 +22,12 @@ export default class ImageCard extends React.PureComponent {
       >
         <View
           style={{
+            backgroundColor: '#00000',
             position: 'absolute',
             top: 0,
             left: 0,
-            right: 10,
-            bottom: 10,
+            right: 0,
+            bottom: 0,
             justifyContent: 'flex-end',
             alignItems: 'flex-end'
           }}
