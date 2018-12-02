@@ -34,16 +34,12 @@ export default class ImageCard extends React.PureComponent {
         style={{ width: '100%', height: 300 }}
         resizeMode={'stretch'}
       >
+        <View style={{ flex: 8 }} />
         <View
           style={{
-            backgroundColor: '#00000',
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            justifyContent: 'flex-end',
-            alignItems: 'flex-end'
+            flex: 1,
+            flexDirection: 'row',
+            justifyContent: 'space-between'
           }}
         >
           <ShareView>
