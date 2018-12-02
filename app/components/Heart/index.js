@@ -4,11 +4,15 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import LottieView from 'lottie-react-native';
 import styled from 'styled-components';
+import { View } from 'react-native';
 
 import allTheActions from '../../actions/index';
 import HeartAnimation from '../../static/animation/heart.json';
 
-const LikeTouchableOpacity = styled.TouchableOpacity``;
+const LikeTouchableOpacity = styled.TouchableOpacity`
+  left: 30;
+  top: 20;
+`;
 
 class Heart extends Component {
   static propTypes = {
@@ -51,23 +55,22 @@ class Heart extends Component {
   render() {
     const { media } = this.props;
     return (
-      <LikeTouchableOpacity
-        onPress={() => this.handleFavButtonPress(media)}
-        style={{ width: 80, height: 60 }}
-      >
-        <LottieView
-          ref={animation => {
-            this.animation = animation;
-          }}
-          source={HeartAnimation}
-          loop={false}
-          speed={this.state.speed}
-          style={{
-            width: 80,
-            height: 80
-          }}
-        />
-      </LikeTouchableOpacity>
+      <View>
+        <LikeTouchableOpacity onPress={() => this.handleFavButtonPress(media)}>
+          <LottieView
+            ref={animation => {
+              this.animation = animation;
+            }}
+            source={HeartAnimation}
+            loop={false}
+            speed={this.state.speed}
+            style={{
+              width: 80,
+              height: 80
+            }}
+          />
+        </LikeTouchableOpacity>
+      </View>
     );
   }
 }
