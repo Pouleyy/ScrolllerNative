@@ -1,8 +1,22 @@
 import React from 'react';
 import { ImageBackground, View } from 'react-native';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 import Heart from '../Heart';
+import Share from '../Share';
+
+const ShareView = styled.View`
+  width: 50;
+  justify-content: flex-end;
+  align-items: flex-start;
+`;
+
+const HeartView = styled.View`
+  width: 50;
+  justify-content: flex-end;
+  align-items: flex-end;
+`;
 
 export default class ImageCard extends React.PureComponent {
   static propTypes = {
@@ -32,7 +46,12 @@ export default class ImageCard extends React.PureComponent {
             alignItems: 'flex-end'
           }}
         >
-          <Heart media={media} />
+          <ShareView>
+            <Share media={media} />
+          </ShareView>
+          <HeartView>
+            <Heart media={media} />
+          </HeartView>
         </View>
       </ImageBackground>
     );
