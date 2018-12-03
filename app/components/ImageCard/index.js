@@ -6,6 +6,12 @@ import styled from 'styled-components';
 import Heart from '../Heart';
 import Share from '../Share';
 
+const HolderRow = styled.View`
+  flex: 1;
+  flex-direction: row;
+  justify-content: space-between;
+`;
+
 const ShareView = styled.View`
   width: 50;
   justify-content: flex-end;
@@ -35,20 +41,14 @@ export default class ImageCard extends React.PureComponent {
         resizeMode={'stretch'}
       >
         <View style={{ flex: 8 }} />
-        <View
-          style={{
-            flex: 1,
-            flexDirection: 'row',
-            justifyContent: 'space-between'
-          }}
-        >
+        <HolderRow>
           <ShareView>
             <Share media={media} />
           </ShareView>
           <HeartView>
             <Heart media={media} />
           </HeartView>
-        </View>
+        </HolderRow>
       </ImageBackground>
     );
   }
